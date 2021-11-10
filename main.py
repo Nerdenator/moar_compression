@@ -1,10 +1,9 @@
 import argparse
-from io import StringIO, BytesIO
+from io import BytesIO
 from PIL import Image
 
 
 def compressor(input_file, output_file, compression_cycles):
-
     # https://stackoverflow.com/questions/30771652/how-to-perform-jpeg-compression-in-python-without-writing-reading
     buffer = BytesIO()
     img = Image.open(input_file)
@@ -24,18 +23,6 @@ def compressor(input_file, output_file, compression_cycles):
         out.write(buffer.read())
     imag = Image.open(output_file)
     imag.show()
-
-
-
-    # buffer = BytesIO()
-    # img.save(buffer, "JPEG")    # https://jdhao.github.io/2019/07/20/pil_jpeg_image_quality/, using 75 as default
-    #
-    # # buffer.seek(0)
-    # with open(output_file, "wb") as handle:
-    #     handle.write(buffer.getbuffer())
-
-
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
